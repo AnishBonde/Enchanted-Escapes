@@ -53,13 +53,13 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize());
 
-const secret=process.env.SECRET || 'thisshouldbeabettersecret!';
+const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret 
+        secret
     }
 });
 
@@ -142,7 +142,6 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
-
 
 
 app.get('/', (req, res) => {
